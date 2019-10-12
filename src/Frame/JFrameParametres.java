@@ -169,10 +169,14 @@ public class JFrameParametres extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_annulerActionPerformed
 
     private void jButton_sauvegarderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_sauvegarderActionPerformed
-       this.sauvegarderDonneesFichier();
+        try {
+            this.sauvegarderDonneesFichier();
+        } catch (IOException ex) {
+            Logger.getLogger(JFrameParametres.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton_sauvegarderActionPerformed
 
-    public void chargerDonneesFichier() throws FileNotFoundException, IOException{
+    public void chargerDonneesFichier() throws FileNotFoundException, IOException {
         try (InputStream input = new FileInputStream("parametresBdd.properties")) {
             Properties prop = new Properties();
 
@@ -198,8 +202,10 @@ public class JFrameParametres extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }
-    
-    public void sauvegarderDonneesFichier(){
+
+    public void sauvegarderDonneesFichier() throws FileNotFoundException, IOException {
+        String mail = "";
+        String mdp = "";
         try (OutputStream output = new FileOutputStream("parametresBdd.properties")) {
 
             Properties prop = new Properties();
@@ -216,18 +222,28 @@ public class JFrameParametres extends javax.swing.JFrame {
         } catch (IOException io) {
             io.printStackTrace();
         }
+        try (InputStream input = new FileInputStream("parametres.properties")) {
+            Properties prop = new Properties();
+
+            prop.load(input);
+
+            mail = prop.getProperty("mail");
+            mdp = prop.getProperty("mdp_mail");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
         try (OutputStream output = new FileOutputStream("parametres.properties")) {
             Properties prop = new Properties();
             prop.setProperty("notification", Boolean.toString(this.jCheckBoxNotification.isSelected()));
+            prop.setProperty("mail", mail);
+            prop.setProperty("mdp_mail", mdp);
             System.out.println();
             prop.store(output, null);
-        }
-        catch (IOException io) {
+        } catch (IOException io) {
             io.printStackTrace();
         }
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */
