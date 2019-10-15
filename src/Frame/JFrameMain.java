@@ -174,20 +174,13 @@ public class JFrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonModifierEntrepriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifierEntrepriseActionPerformed
-        //String nom = this.
-        System.out.println(this.jTableEntreprise.getSelectedRow());
         String nom = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 0).toString();
-        System.out.println(nom);
         String adresse = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 1).toString();
-        System.out.println(adresse);
         String ville = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 2).toString();
-        System.out.println(ville);
         String dateRelance = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 3).toString();
-        System.out.println(dateRelance);
         boolean relanceEffectuee = Boolean.parseBoolean(this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 4).toString());
         CEntreprise entreprise = new CEntreprise(nom, adresse, ville, dateRelance, relanceEffectuee);
-        JFrameModifier modifier = new JFrameModifier(entreprise);
-        modifier.setVisible(true);
+        new JFrameModifier(entreprise).setVisible(true);
     }//GEN-LAST:event_jButtonModifierEntrepriseActionPerformed
 
     public void afficherInfoEntreprise() {

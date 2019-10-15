@@ -8,7 +8,6 @@ package Entites;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 import javax.mail.Message;
@@ -27,7 +26,7 @@ import javax.mail.internet.MimeMessage;
 //source: https://dzone.com/articles/sending-mail-using-javamail-api-for-gmail-server
 public class CMailGmail {
 
-    public void sendMail() {
+    public void sendMail(String message, String sujet) {
         //Setting up configurations for the email connection to the Google SMTP server using TLS
         Properties props = new Properties();
         props.put("mail.smtp.host", "true");
@@ -64,10 +63,9 @@ public class CMailGmail {
             InternetAddress[] address = InternetAddress.parse(to, true);
             //Setting the recepients from the address variable
             msg.setRecipients(Message.RecipientType.TO, address);
-            String timeStamp = new SimpleDateFormat("yyyymmdd_hh-mm-ss").format(new Date());
-            msg.setSubject("Sample Mail : " + timeStamp);
+            msg.setSubject(sujet);
             msg.setSentDate(new Date());
-            msg.setText("Sampel System Generated mail");
+            msg.setText(message);
             msg.setHeader("XPriority", "1");
             Transport.send(msg);
             System.out.println("Mail has been sent successfully");

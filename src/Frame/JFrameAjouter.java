@@ -158,12 +158,9 @@ public class JFrameAjouter extends javax.swing.JFrame {
     private void jButtonAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAjouterActionPerformed
         String dateRelance = "";
         if (this.jCheckBoxRelanceEffectuee.isSelected()) {
-            /*Date date = new Date();
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-            dateRelance = formatter.format(date);*/
             dateRelance = "";
         } else {
-            dateRelance = metier.calculDateRelance("", 7);
+            dateRelance = metier.calculDateRelance(this.jTextFieldDateRelance.getText(), 7);
         }
         CEntreprise entreprise = new CEntreprise(this.jTextFieldNom.getText(), this.jTextFieldAdresse.getText(), this.jTextFieldVille.getText(), dateRelance, this.jCheckBoxRelanceEffectuee.isSelected());
         metier.InsererEntreprise(entreprise);

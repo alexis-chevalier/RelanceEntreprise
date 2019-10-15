@@ -26,9 +26,7 @@ public class JFrameModifier extends javax.swing.JFrame {
 
     public JFrameModifier(CEntreprise entreprise) {
         initComponents();
-        System.out.println("ok");
         this.setEntreprise(entreprise);
-        System.out.println("ok2");
         this.jTextFieldNom.setText(entreprise.getNom());
         this.jTextFieldAdresse.setText(entreprise.getAdresse());
         this.jTextFieldVille.setText(entreprise.getVille());

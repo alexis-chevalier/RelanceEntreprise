@@ -128,7 +128,6 @@ public class CTableEntreprise {
                 + "',relance_effectuee=" + entreprise.getRelanceEffectuee()
                 + " WHERE Nom='" + entreprise.getNom() + "';";
         if (bdd.connecter()) {
-            System.out.println(req);
             bdd.executerRequeteUpdate(req);
             bdd.deconnecter();
         } else {
