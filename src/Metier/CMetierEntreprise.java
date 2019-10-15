@@ -44,6 +44,13 @@ public class CMetierEntreprise {
         String dateRelance = tableEntreprise.calculDateRelance(date, nbAjouter);
         return dateRelance;
     }
+    
+    public void ModifierEntreprise(CEntreprise entreprise){
+        CBDD bdd = new CBDD(new CParametresStockageBDD("parametresBdd.properties"));
+        CTableEntreprise tableEntreprise = new CTableEntreprise();
+        tableEntreprise.setBdd(bdd);
+        tableEntreprise.modifierEntreprise(entreprise);
+    }
 
     public static void main(String[] args) {
         CMetierEntreprise metier = new CMetierEntreprise();

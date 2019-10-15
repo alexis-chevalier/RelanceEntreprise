@@ -7,6 +7,8 @@ package Frame;
 
 import Entites.CEntreprise;
 import Metier.CMetierEntreprise;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -15,7 +17,7 @@ import Metier.CMetierEntreprise;
 public class JFrameAjouter extends javax.swing.JFrame {
 
     CMetierEntreprise metier = new CMetierEntreprise();
-    
+
     /**
      * Creates new form JFrameAjouter
      */
@@ -74,6 +76,12 @@ public class JFrameAjouter extends javax.swing.JFrame {
         jLabel4.setText("Date relance");
 
         jLabel5.setText("Relance effectuee");
+
+        jCheckBoxRelanceEffectuee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxRelanceEffectueeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,10 +157,25 @@ public class JFrameAjouter extends javax.swing.JFrame {
 
     private void jButtonAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAjouterActionPerformed
         String dateRelance = "";
-        dateRelance = metier.calculDateRelance("", 7);
-        CEntreprise entreprise = new CEntreprise(this.jTextFieldNom.getText(),this.jTextFieldAdresse.getText(),this.jTextFieldVille.getText(),dateRelance, this.jCheckBoxRelanceEffectuee.isSelected());
+        if (this.jCheckBoxRelanceEffectuee.isSelected()) {
+            /*Date date = new Date();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            dateRelance = formatter.format(date);*/
+            dateRelance = "";
+        } else {
+            dateRelance = metier.calculDateRelance("", 7);
+        }
+        CEntreprise entreprise = new CEntreprise(this.jTextFieldNom.getText(), this.jTextFieldAdresse.getText(), this.jTextFieldVille.getText(), dateRelance, this.jCheckBoxRelanceEffectuee.isSelected());
         metier.InsererEntreprise(entreprise);
     }//GEN-LAST:event_jButtonAjouterActionPerformed
+
+    private void jCheckBoxRelanceEffectueeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxRelanceEffectueeActionPerformed
+        if (this.jCheckBoxRelanceEffectuee.isSelected()) {
+            this.jTextFieldDateRelance.setEnabled(false);
+        } else {
+            this.jTextFieldDateRelance.setEnabled(true);
+        }
+    }//GEN-LAST:event_jCheckBoxRelanceEffectueeActionPerformed
 
     /**
      * @param args the command line arguments

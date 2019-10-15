@@ -116,10 +116,23 @@ public class CTableEntreprise {
         c.add(Calendar.DATE, nbJourAjouter);
         date1 = c.getTime();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
-        //dateRelance = date1.toString();
         dateRelance = sdf.format(date1);
         System.out.println(dateRelance);
         return dateRelance;
+    }
+
+    public void modifierEntreprise(CEntreprise entreprise) {
+        String req = "UPDATE `entreprise` SET Adresse='" + entreprise.getAdresse()
+                + "',Ville='" + entreprise.getVille()
+                + "',date_relance=" + entreprise.getDateRelance()
+                + "',relance_effectuee=" + entreprise.getRelanceEffectuee()
+                + " WHERE Nom='" + entreprise.getNom() + "'";
+        if (bdd.connecter()) {
+            bdd.executerRequeteUpdate(req);
+            bdd.deconnecter();
+        } else {
+            System.out.println("Connexion KO");
+        }
     }
 
 }
