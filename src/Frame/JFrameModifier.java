@@ -5,12 +5,39 @@
  */
 package Frame;
 
+import Entites.CEntreprise;
+import Metier.CMetierEntreprise;
+
 /**
  *
  * @author Alexis
  */
 public class JFrameModifier extends javax.swing.JFrame {
 
+    private CEntreprise entreprise;
+
+    public CEntreprise getEntreprise() {
+        return entreprise;
+    }
+
+    public void setEntreprise(CEntreprise entreprise) {
+        this.entreprise = entreprise;
+    }
+
+    public JFrameModifier(CEntreprise entreprise) {
+        initComponents();
+        System.out.println("ok");
+        this.setEntreprise(entreprise);
+        System.out.println("ok2");
+        this.jTextFieldNom.setText(entreprise.getNom());
+        this.jTextFieldAdresse.setText(entreprise.getAdresse());
+        this.jTextFieldVille.setText(entreprise.getVille());
+        this.jTextFieldDateRelance.setText(entreprise.getDateRelance());
+        this.jCheckBoxRelanceEffectuee.setSelected(entreprise.getRelanceEffectuee());
+    }
+    
+    CMetierEntreprise metier = new CMetierEntreprise();
+    
     /**
      * Creates new form JFrameModifier
      */
@@ -35,7 +62,7 @@ public class JFrameModifier extends javax.swing.JFrame {
         jTextFieldNom = new javax.swing.JTextField();
         jTextFieldAdresse = new javax.swing.JTextField();
         jTextFieldVille = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldDateRelance = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jCheckBoxRelanceEffectuee = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
@@ -57,8 +84,18 @@ public class JFrameModifier extends javax.swing.JFrame {
         jLabel6.setText("Relance effectuée");
 
         jButton1.setText("Confirmer");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Annuler");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,7 +116,7 @@ public class JFrameModifier extends javax.swing.JFrame {
                             .addComponent(jTextFieldNom)
                             .addComponent(jTextFieldAdresse)
                             .addComponent(jTextFieldVille)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                            .addComponent(jTextFieldDateRelance, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                             .addComponent(jCheckBoxRelanceEffectuee)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(149, 149, 149)
@@ -110,7 +147,7 @@ public class JFrameModifier extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDateRelance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,6 +162,21 @@ public class JFrameModifier extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String nom = this.jTextFieldNom.getText();
+        String adresse = this.jTextFieldAdresse.getText();
+        String ville = this.jTextFieldVille.getText();
+        String dateRelance = this.jTextFieldDateRelance.getText();
+        boolean relanceEffectuee = this.jCheckBoxRelanceEffectuee.isSelected();
+        CEntreprise entreprise = new CEntreprise(nom, adresse, ville, dateRelance, relanceEffectuee);
+        metier.ModifierEntreprise(entreprise);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,8 +223,8 @@ public class JFrameModifier extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldAdresse;
+    private javax.swing.JTextField jTextFieldDateRelance;
     private javax.swing.JTextField jTextFieldNom;
     private javax.swing.JTextField jTextFieldVille;
     // End of variables declaration//GEN-END:variables

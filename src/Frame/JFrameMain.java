@@ -46,6 +46,7 @@ public class JFrameMain extends javax.swing.JFrame {
         jButtonSupprimer = new javax.swing.JButton();
         jButtonParametres = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButtonModifierEntreprise = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Relance");
@@ -98,6 +99,13 @@ public class JFrameMain extends javax.swing.JFrame {
             }
         });
 
+        jButtonModifierEntreprise.setText("Modifier entreprise");
+        jButtonModifierEntreprise.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModifierEntrepriseActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -114,7 +122,8 @@ public class JFrameMain extends javax.swing.JFrame {
                             .addComponent(jButtonSupprimer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonAjouter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonParametres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonModifierEntreprise, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -131,6 +140,8 @@ public class JFrameMain extends javax.swing.JFrame {
                         .addComponent(jButtonAjouter)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonSupprimer)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonModifierEntreprise)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
@@ -161,6 +172,23 @@ public class JFrameMain extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.RafraichirListe();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonModifierEntrepriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifierEntrepriseActionPerformed
+        //String nom = this.
+        System.out.println(this.jTableEntreprise.getSelectedRow());
+        String nom = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 0).toString();
+        System.out.println(nom);
+        String adresse = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 1).toString();
+        System.out.println(adresse);
+        String ville = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 2).toString();
+        System.out.println(ville);
+        String dateRelance = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 3).toString();
+        System.out.println(dateRelance);
+        boolean relanceEffectuee = Boolean.parseBoolean(this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 4).toString());
+        CEntreprise entreprise = new CEntreprise(nom, adresse, ville, dateRelance, relanceEffectuee);
+        JFrameModifier modifier = new JFrameModifier(entreprise);
+        modifier.setVisible(true);
+    }//GEN-LAST:event_jButtonModifierEntrepriseActionPerformed
 
     public void afficherInfoEntreprise() {
         ArrayList<CEntreprise> list = metierEntreprise.RecupererListeEntreprise();
@@ -225,6 +253,7 @@ public class JFrameMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAjouter;
+    private javax.swing.JButton jButtonModifierEntreprise;
     private javax.swing.JButton jButtonParametres;
     private javax.swing.JButton jButtonSupprimer;
     private javax.swing.JLabel jLabelListeEntreprise;

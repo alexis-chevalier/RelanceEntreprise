@@ -124,10 +124,11 @@ public class CTableEntreprise {
     public void modifierEntreprise(CEntreprise entreprise) {
         String req = "UPDATE `entreprise` SET Adresse='" + entreprise.getAdresse()
                 + "',Ville='" + entreprise.getVille()
-                + "',date_relance=" + entreprise.getDateRelance()
+                + "',date_relance='" + entreprise.getDateRelance()
                 + "',relance_effectuee=" + entreprise.getRelanceEffectuee()
-                + " WHERE Nom='" + entreprise.getNom() + "'";
+                + " WHERE Nom='" + entreprise.getNom() + "';";
         if (bdd.connecter()) {
+            System.out.println(req);
             bdd.executerRequeteUpdate(req);
             bdd.deconnecter();
         } else {
