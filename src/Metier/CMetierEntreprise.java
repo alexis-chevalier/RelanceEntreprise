@@ -31,19 +31,24 @@ public class CMetierEntreprise {
         tableEntreprise.setBdd(bdd);
         tableEntreprise.insererEntreprise(entreprise);
     }
-    
-    public void SupprimerEntreprise(String nomEntreprise){
+
+    public void SupprimerEntreprise(String nomEntreprise) {
         CBDD bdd = new CBDD(new CParametresStockageBDD("parametresBdd.properties"));
         CTableEntreprise tableEntreprise = new CTableEntreprise();
         tableEntreprise.setBdd(bdd);
         tableEntreprise.supprimerEntreprise(nomEntreprise);
     }
-    
+
+    public String calculDateRelance(String date, int nbAjouter) {
+        CTableEntreprise tableEntreprise = new CTableEntreprise();
+        String dateRelance = tableEntreprise.calculDateRelance(date, nbAjouter);
+        return dateRelance;
+    }
 
     public static void main(String[] args) {
         CMetierEntreprise metier = new CMetierEntreprise();
-        CEntreprise entreprise = new CEntreprise("abcd","adresse","ville","01/01/2005",false);
+        CEntreprise entreprise = new CEntreprise("abcd", "adresse", "ville", "01/01/2005", false);
         metier.InsererEntreprise(entreprise);
     }
-    
+
 }

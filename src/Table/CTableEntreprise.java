@@ -11,9 +11,13 @@ import Liste.CListeEntreprise;
 import bdd.CBDD;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -93,6 +97,29 @@ public class CTableEntreprise {
         } else {
             System.out.println("Connexion KO");
         }
+    }
+
+    public String calculDateRelance(String date, int nbJourAjouter) {
+        String dateRelance = "";
+        Date date1 = new Date(System.currentTimeMillis());
+        try {
+            date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+        } catch (ParseException ex) {
+            //A mettre
+            System.out.println("La date du jour a été utilisée.");
+        }
+        if (nbJourAjouter < 1) {
+            nbJourAjouter = 7;
+        }
+        Calendar c = Calendar.getInstance();
+        c.setTime(date1);
+        c.add(Calendar.DATE, nbJourAjouter);
+        date1 = c.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
+        //dateRelance = date1.toString();
+        dateRelance = sdf.format(date1);
+        System.out.println(dateRelance);
+        return dateRelance;
     }
 
 }

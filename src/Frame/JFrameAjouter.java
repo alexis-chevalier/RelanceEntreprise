@@ -148,7 +148,9 @@ public class JFrameAjouter extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAnnulerActionPerformed
 
     private void jButtonAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAjouterActionPerformed
-        CEntreprise entreprise = new CEntreprise(this.jTextFieldNom.getText(),this.jTextFieldAdresse.getText(),this.jTextFieldVille.getText(),this.jTextFieldDateRelance.getText(), this.jCheckBoxRelanceEffectuee.isSelected());
+        String dateRelance = "";
+        dateRelance = metier.calculDateRelance("", 7);
+        CEntreprise entreprise = new CEntreprise(this.jTextFieldNom.getText(),this.jTextFieldAdresse.getText(),this.jTextFieldVille.getText(),dateRelance, this.jCheckBoxRelanceEffectuee.isSelected());
         metier.InsererEntreprise(entreprise);
     }//GEN-LAST:event_jButtonAjouterActionPerformed
 

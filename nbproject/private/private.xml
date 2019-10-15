@@ -4,9 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Frame/JFrameParametres.java</file>
-            <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Liste/CListeEntreprise.java</file>
+            <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/bdd/CBDD.java</file>
             <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Frame/JFrameMain.java</file>
-            <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Entites/CNotification.java</file>
+            <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Frame/JFrameAjouter.java</file>
+            <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Entites/CMailGmail.java</file>
+            <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/parametres.properties</file>
         </group>
     </open-files>
 </project-private>
