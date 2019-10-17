@@ -47,8 +47,6 @@ public class CTableEntreprise {
         int res = -1;
         if (bdd.connecter() == true) {
             res = bdd.executerRequeteUpdate(req);
-            System.out.println("Res = " + res);
-            //System.out.println(req);
             bdd.deconnecter();
         } else {
             System.out.println("Connexion KO");
@@ -106,7 +104,6 @@ public class CTableEntreprise {
             date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
         } catch (ParseException ex) {
             //A mettre
-            System.out.println("La date du jour a été utilisée.");
         }
         if (nbJourAjouter < 1) {
             nbJourAjouter = 7;
@@ -117,7 +114,6 @@ public class CTableEntreprise {
         date1 = c.getTime();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
         dateRelance = sdf.format(date1);
-        System.out.println(dateRelance);
         return dateRelance;
     }
 

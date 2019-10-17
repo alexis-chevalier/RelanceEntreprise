@@ -9,6 +9,7 @@ import Entites.CEntreprise;
 import Metier.CMetierEntreprise;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -163,7 +164,12 @@ public class JFrameAjouter extends javax.swing.JFrame {
             dateRelance = metier.calculDateRelance(this.jTextFieldDateRelance.getText(), 7);
         }
         CEntreprise entreprise = new CEntreprise(this.jTextFieldNom.getText(), this.jTextFieldAdresse.getText(), this.jTextFieldVille.getText(), dateRelance, this.jCheckBoxRelanceEffectuee.isSelected());
-        metier.InsererEntreprise(entreprise);
+        try {
+            metier.InsererEntreprise(entreprise);
+            JOptionPane.showMessageDialog(null, "L'entreprise a bien été ajoutée.", "Entreprise ajoutée", JOptionPane.INFORMATION_MESSAGE, null);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erreur lors de l'ajout.", "Erreur", JOptionPane.ERROR_MESSAGE, null);
+        }
     }//GEN-LAST:event_jButtonAjouterActionPerformed
 
     private void jCheckBoxRelanceEffectueeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxRelanceEffectueeActionPerformed

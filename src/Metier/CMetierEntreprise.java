@@ -52,10 +52,4 @@ public class CMetierEntreprise {
         tableEntreprise.modifierEntreprise(entreprise);
     }
 
-    public static void main(String[] args) {
-        CMetierEntreprise metier = new CMetierEntreprise();
-        CEntreprise entreprise = new CEntreprise("abcd", "adresse", "ville", "01/01/2005", false);
-        metier.InsererEntreprise(entreprise);
-    }
-
 }

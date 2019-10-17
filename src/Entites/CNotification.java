@@ -25,7 +25,7 @@ public class CNotification {
         trayIcon.displayMessage(texte, titre, MessageType.INFO);
     }
 
-    public static void main(String[] args) throws AWTException {
+    /*public static void main(String[] args) throws AWTException {
         if (SystemTray.isSupported()) {
             String titre = "test titre";
             String texte = "test texte";
@@ -34,6 +34,6 @@ public class CNotification {
         } else {
             System.err.println("System tray not supported!");
         }
-    }
+    }*/
 
 }

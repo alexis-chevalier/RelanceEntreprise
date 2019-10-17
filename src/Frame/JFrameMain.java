@@ -48,27 +48,35 @@ public class JFrameMain extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButtonModifierEntreprise = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Relance");
 
         jLabelListeEntreprise.setText("Liste entreprise:");
 
+        jTableEntreprise.setAutoCreateRowSorter(true);
         jTableEntreprise.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nom", "Adresse", "Ville", "Date relance ", "Relance"
+                "Nom", "Ville", "Date relance ", "Relance"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
+        jTableEntreprise.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jTableEntreprise);
 
         jButtonAjouter.setText("Ajouter entreprise");
@@ -165,8 +173,17 @@ public class JFrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAjouterActionPerformed
 
     private void jButtonSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSupprimerActionPerformed
-        String nomEntreprise = (this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 0)).toString();
-        metierEntreprise.SupprimerEntreprise(nomEntreprise);
+        try {
+            String nomEntreprise = (this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 0)).toString();
+            try {
+                metierEntreprise.SupprimerEntreprise(nomEntreprise);
+                JOptionPane.showMessageDialog(null, "L'entreprise a bien été supprimée.", "Entreprise supprimée", JOptionPane.INFORMATION_MESSAGE, null);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Erreur lors de la suppression.", "Erreur", JOptionPane.ERROR_MESSAGE, null);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Pas d'entreprise sélectionnée.", "Erreur", JOptionPane.ERROR_MESSAGE, null);
+        }
     }//GEN-LAST:event_jButtonSupprimerActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -175,29 +192,32 @@ public class JFrameMain extends javax.swing.JFrame {
 
     private void jButtonModifierEntrepriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifierEntrepriseActionPerformed
         String nom = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 0).toString();
-        String adresse = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 1).toString();
-        String ville = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 2).toString();
-        String dateRelance = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 3).toString();
-        boolean relanceEffectuee = Boolean.parseBoolean(this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 4).toString());
+        String adresse = "";
+        String ville = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 1).toString();
+        String dateRelance = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 2).toString();
+        boolean relanceEffectuee = Boolean.parseBoolean(this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 3).toString());
         CEntreprise entreprise = new CEntreprise(nom, adresse, ville, dateRelance, relanceEffectuee);
         new JFrameModifier(entreprise).setVisible(true);
     }//GEN-LAST:event_jButtonModifierEntrepriseActionPerformed
 
     public void afficherInfoEntreprise() {
-        ArrayList<CEntreprise> list = metierEntreprise.RecupererListeEntreprise();
-        DefaultTableModel model = (DefaultTableModel) jTableEntreprise.getModel();
-        Object[] row = new Object[5];
+        try {
+            ArrayList<CEntreprise> list = metierEntreprise.RecupererListeEntreprise();
+            DefaultTableModel model = (DefaultTableModel) jTableEntreprise.getModel();
+            Object[] row = new Object[4];
 
-        for (int i = 0; i < list.size(); i++) {
-            row[0] = list.get(i).getNom();
-            row[1] = list.get(i).getAdresse();
-            row[2] = list.get(i).getVille();
-            row[3] = list.get(i).getDateRelance();
-            row[4] = list.get(i).getRelanceEffectuee();
-            model.addRow(row);
+            for (int i = 0; i < list.size(); i++) {
+                row[0] = list.get(i).getNom();
+                row[1] = list.get(i).getVille();
+                row[2] = list.get(i).getDateRelance();
+                row[3] = list.get(i).getRelanceEffectuee();
+                model.addRow(row);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Impossible de contacter la base de données", "Erreur", JOptionPane.INFORMATION_MESSAGE, null);
         }
     }
-    
+
     public void RafraichirListe() {
         DefaultTableModel model = (DefaultTableModel) jTableEntreprise.getModel();
         model.setRowCount(0);

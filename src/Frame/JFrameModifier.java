@@ -7,6 +7,7 @@ package Frame;
 
 import Entites.CEntreprise;
 import Metier.CMetierEntreprise;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,7 +29,6 @@ public class JFrameModifier extends javax.swing.JFrame {
         initComponents();
         this.setEntreprise(entreprise);
         this.jTextFieldNom.setText(entreprise.getNom());
-        this.jTextFieldAdresse.setText(entreprise.getAdresse());
         this.jTextFieldVille.setText(entreprise.getVille());
         this.jTextFieldDateRelance.setText(entreprise.getDateRelance());
         this.jCheckBoxRelanceEffectuee.setSelected(entreprise.getRelanceEffectuee());
@@ -163,13 +163,18 @@ public class JFrameModifier extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nom = this.jTextFieldNom.getText();
-        String adresse = this.jTextFieldAdresse.getText();
+        String adresse = "";
         String ville = this.jTextFieldVille.getText();
         String dateRelance = this.jTextFieldDateRelance.getText();
         boolean relanceEffectuee = this.jCheckBoxRelanceEffectuee.isSelected();
         CEntreprise entreprise = new CEntreprise(nom, adresse, ville, dateRelance, relanceEffectuee);
+        try{
         metier.ModifierEntreprise(entreprise);
         this.setVisible(false);
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Erreur lors de la modification.", "Erreur", JOptionPane.ERROR_MESSAGE, null);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
