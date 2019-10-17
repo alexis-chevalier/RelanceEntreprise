@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 public class CSystemTray {
     //src: https://stackoverflow.com/questions/758083/how-do-i-put-a-java-app-in-the-system-tray
 
-    CSystemTray() {
+    public CSystemTray() {
         //checking for support
         if (!SystemTray.isSupported()) {
             System.out.println("System tray is not supported !!! ");
@@ -26,7 +26,9 @@ public class CSystemTray {
         //Toolkit toolkit = Toolkit.getDefaultToolkit();
         //get image 
         //Toolkit.getDefaultToolkit().getImage("src/resources/busylogo.jpg");
-        Image image = Toolkit.getDefaultToolkit().getImage("src/images/1.gif");
+        //Image image = Toolkit.getDefaultToolkit().getImage("src/images/1.gif");
+        //source: https://media.giphy.com/media/3oEdv1GbekAakxXO8g/source.gif
+        Image image = Toolkit.getDefaultToolkit().getImage("img/source.gif");
 
         //popupmenu
         PopupMenu trayPopupMenu = new PopupMenu();
@@ -65,7 +67,7 @@ public class CSystemTray {
         trayPopupMenu.add(parametre);
 
         //2nd menuitem of popupmenu
-        MenuItem close = new MenuItem("Close");
+        MenuItem close = new MenuItem("Quitter");
         close.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

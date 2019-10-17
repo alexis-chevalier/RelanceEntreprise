@@ -6,6 +6,7 @@
 package Frame;
 
 import Entites.CEntreprise;
+import Entites.CSystemTray;
 import Metier.CMetierEntreprise;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -258,6 +259,7 @@ public class JFrameMain extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                new CSystemTray();
                 new JFrameMain().setVisible(true);
             }
         });
