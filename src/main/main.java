@@ -64,9 +64,9 @@ public class main {
 
     public static void main(String[] args) {
         main Main = new main();
+        Main.regarderDate();
         JFrameMain frame = new JFrameMain();
         CSystemTray tray = new CSystemTray();
-        Main.regarderDate();
     }
 
 }

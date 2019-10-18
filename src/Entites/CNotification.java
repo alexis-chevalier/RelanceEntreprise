@@ -21,11 +21,13 @@ public class CNotification {
         //Set tooltip text for the tray icon
         trayIcon.setToolTip("System tray icon demo");
         tray.add(trayIcon);
-
+        
         trayIcon.displayMessage(texte, titre, MessageType.INFO);
+        
+        tray.remove(trayIcon);
     }
 
-    /*public static void main(String[] args) throws AWTException {
+    public static void main(String[] args) throws AWTException {
         if (SystemTray.isSupported()) {
             String titre = "test titre";
             String texte = "test texte";
@@ -34,6 +36,6 @@ public class CNotification {
         } else {
             System.err.println("System tray not supported!");
         }
-    }*/
+    }
 
 }
