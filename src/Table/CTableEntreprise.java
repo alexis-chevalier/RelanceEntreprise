@@ -6,8 +6,6 @@
 package Table;
 
 import Entites.CEntreprise;
-import Entites.CRelance;
-import Liste.CListeEntreprise;
 import bdd.CBDD;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -106,7 +104,7 @@ public class CTableEntreprise {
             //A mettre
         }
         if (nbJourAjouter < 1) {
-            nbJourAjouter = 7;
+            nbJourAjouter = 17;
         }
         Calendar c = Calendar.getInstance();
         c.setTime(date1);

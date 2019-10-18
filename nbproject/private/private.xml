@@ -5,16 +5,17 @@
         <group>
             <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Frame/JFrameParametres.java</file>
             <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Liste/CListeEntreprise.java</file>
+            <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Entites/CSystemTray.java</file>
+            <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Frame/JFrameAjouter.java</file>
+            <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Table/CTableEntreprise.java</file>
             <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Metier/CMetierEntreprise.java</file>
             <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Frame/JFrameModifier.java</file>
             <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Metier/CMetierMail.java</file>
             <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Frame/JFrameMain.java</file>
             <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Entites/CNotification.java</file>
-            <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Entites/CSystemTray.java</file>
-            <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Frame/JFrameAjouter.java</file>
-            <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Metier/CMetierNotification.java</file>
-            <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Table/CTableEntreprise.java</file>
+            <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/main/main.java</file>
             <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/src/Entites/CMailGmail.java</file>
+            <file>file:/C:/Users/Alexis/Documents/NetBeansProjects/Relance/parametres.properties</file>
         </group>
     </open-files>
 </project-private>

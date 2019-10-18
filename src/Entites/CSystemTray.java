@@ -8,7 +8,6 @@ import java.awt.event.*;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 public class CSystemTray {
     //src: https://stackoverflow.com/questions/758083/how-do-i-put-a-java-app-in-the-system-tray

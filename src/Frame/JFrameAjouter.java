@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Frame;
 
 import Entites.CEntreprise;
 import Metier.CMetierEntreprise;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -162,7 +155,7 @@ public class JFrameAjouter extends javax.swing.JFrame {
         if (this.jCheckBoxRelanceEffectuee.isSelected()) {
             dateRelance = "";
         } else {
-            dateRelance = metier.calculDateRelance(this.jTextFieldDateRelance.getText(), 7);
+            dateRelance = metier.calculDateRelance(this.jTextFieldDateRelance.getText(), 17);
         }
         CEntreprise entreprise = new CEntreprise(this.jTextFieldNom.getText(), this.jTextFieldAdresse.getText(), this.jTextFieldVille.getText(), dateRelance, this.jCheckBoxRelanceEffectuee.isSelected());
         try {
