@@ -27,6 +27,7 @@ public class JFrameModifier extends javax.swing.JFrame {
 
     public JFrameModifier(CEntreprise entreprise) {
         initComponents();
+        setLocationRelativeTo(null);
         this.setEntreprise(entreprise);
         this.jTextFieldNom.setText(entreprise.getNom());
         this.jTextFieldVille.setText(entreprise.getVille());
@@ -41,6 +42,7 @@ public class JFrameModifier extends javax.swing.JFrame {
      */
     public JFrameModifier() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

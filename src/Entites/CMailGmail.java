@@ -39,14 +39,14 @@ public class CMailGmail {
             protected PasswordAuthentication getPasswordAuthentication() {
                 String mail = "";
                 String mdp = "";
-                try (InputStream input = new FileInputStream("parametresBdd.properties")) {
+                try (InputStream input = new FileInputStream("parametres.properties")) {
                     Properties prop = new Properties();
 
                     prop.load(input);
 
                     mail = prop.getProperty("mail");
                     mdp = prop.getProperty("mdp_mail");
-
+                    
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
@@ -57,7 +57,7 @@ public class CMailGmail {
             //Creating a Message object to set the email content
             MimeMessage msg = new MimeMessage(session);
             //Storing the comma seperated values to email addresses
-            String to = "recepient1@email.com,recepient2@gmail.com";
+            String to = "";
             /*Parsing the String with defualt delimiter as a comma by marking the boolean as true and storing the email
             addresses in an array of InternetAddress objects*/
             InternetAddress[] address = InternetAddress.parse(to, true);
@@ -73,5 +73,5 @@ public class CMailGmail {
             System.out.println("Unable to send an email" + mex);
         }
     }
-
+    
 }

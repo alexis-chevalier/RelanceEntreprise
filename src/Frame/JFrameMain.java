@@ -28,6 +28,7 @@ public class JFrameMain extends javax.swing.JFrame {
      */
     public JFrameMain() {
         initComponents();
+        setLocationRelativeTo(null);
         this.afficherInfoEntreprise();
     }
 
@@ -192,13 +193,17 @@ public class JFrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonModifierEntrepriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifierEntrepriseActionPerformed
-        String nom = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 0).toString();
-        String adresse = "";
-        String ville = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 1).toString();
-        String dateRelance = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 2).toString();
-        boolean relanceEffectuee = Boolean.parseBoolean(this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 3).toString());
-        CEntreprise entreprise = new CEntreprise(nom, adresse, ville, dateRelance, relanceEffectuee);
-        new JFrameModifier(entreprise).setVisible(true);
+        try {
+            String nom = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 0).toString();
+            String adresse = "";
+            String ville = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 1).toString();
+            String dateRelance = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 2).toString();
+            boolean relanceEffectuee = Boolean.parseBoolean(this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 3).toString());
+            CEntreprise entreprise = new CEntreprise(nom, adresse, ville, dateRelance, relanceEffectuee);
+            new JFrameModifier(entreprise).setVisible(true);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erreur lors de la modification.", "Erreur", JOptionPane.ERROR_MESSAGE, null);
+        }
     }//GEN-LAST:event_jButtonModifierEntrepriseActionPerformed
 
     public void afficherInfoEntreprise() {

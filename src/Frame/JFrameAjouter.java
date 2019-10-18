@@ -24,6 +24,7 @@ public class JFrameAjouter extends javax.swing.JFrame {
      */
     public JFrameAjouter() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

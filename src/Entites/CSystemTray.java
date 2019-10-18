@@ -25,10 +25,10 @@ public class CSystemTray {
         //get default toolkit
         //Toolkit toolkit = Toolkit.getDefaultToolkit();
         //get image 
-        //Toolkit.getDefaultToolkit().getImage("src/resources/busylogo.jpg");
+        Image image = Toolkit.getDefaultToolkit().getImage("img/robot.png");
         //Image image = Toolkit.getDefaultToolkit().getImage("src/images/1.gif");
         //source: https://media.giphy.com/media/3oEdv1GbekAakxXO8g/source.gif
-        Image image = Toolkit.getDefaultToolkit().getImage("img/source.gif");
+        //Image image = Toolkit.getDefaultToolkit().getImage("img/source.gif");
 
         //popupmenu
         PopupMenu trayPopupMenu = new PopupMenu();
@@ -77,7 +77,7 @@ public class CSystemTray {
         trayPopupMenu.add(close);
 
         //setting tray icon
-        TrayIcon trayIcon = new TrayIcon(image, "SystemTray Demo", trayPopupMenu);
+        TrayIcon trayIcon = new TrayIcon(image, "Relance entreprise", trayPopupMenu);
         //adjust to default size as per system recommendation 
         trayIcon.setImageAutoSize(true);
 

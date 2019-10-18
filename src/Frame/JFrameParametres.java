@@ -26,6 +26,7 @@ public class JFrameParametres extends javax.swing.JFrame {
      */
     public JFrameParametres() throws IOException {
         initComponents();
+        setLocationRelativeTo(null);
         this.chargerDonneesFichier();
     }
 
