@@ -127,6 +127,5 @@ public class CTableEntreprise {
         } else {
             System.out.println("Connexion KO");
         }
-    }
-
+    }    
 }

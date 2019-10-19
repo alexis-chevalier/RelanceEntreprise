@@ -24,6 +24,7 @@ public class JFrameMain extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.afficherInfoEntreprise();
+        this.afficherEntrepriseARelancer();
     }
 
     /**
@@ -43,6 +44,8 @@ public class JFrameMain extends javax.swing.JFrame {
         jButtonParametres = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButtonModifierEntreprise = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextAreaARelancer = new javax.swing.JTextArea();
 
         setTitle("Relance");
 
@@ -110,6 +113,10 @@ public class JFrameMain extends javax.swing.JFrame {
             }
         });
 
+        jTextAreaARelancer.setColumns(20);
+        jTextAreaARelancer.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaARelancer);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,14 +128,19 @@ public class JFrameMain extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonSupprimer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonAjouter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonParametres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonModifierEntreprise, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(49, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButtonSupprimer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButtonAjouter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButtonParametres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButtonModifierEntreprise, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,6 +158,8 @@ public class JFrameMain extends javax.swing.JFrame {
                         .addComponent(jButtonSupprimer)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonModifierEntreprise)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
@@ -180,6 +194,7 @@ public class JFrameMain extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Pas d'entreprise sélectionnée.", "Erreur", JOptionPane.ERROR_MESSAGE, null);
         }
+        this.RafraichirListe();
     }//GEN-LAST:event_jButtonSupprimerActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -228,6 +243,19 @@ public class JFrameMain extends javax.swing.JFrame {
         }
     }
 
+    public void afficherEntrepriseARelancer() {
+        ArrayList<CEntreprise> listeARelancer = metierEntreprise.EntrepriseARelancer();
+        if (listeARelancer == null) {
+            this.jTextAreaARelancer.setVisible(false);
+        } else {
+            String texte = "Liste des entreprises à relancer:\n";
+            for (int i = 0; i < listeARelancer.size(); i++) {
+                texte = texte + "- "+listeARelancer.get(i).getNom()+"\n";
+            }
+            this.jTextAreaARelancer.setText(texte);
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -271,6 +299,8 @@ public class JFrameMain extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSupprimer;
     private javax.swing.JLabel jLabelListeEntreprise;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableEntreprise;
+    private javax.swing.JTextArea jTextAreaARelancer;
     // End of variables declaration//GEN-END:variables
 }

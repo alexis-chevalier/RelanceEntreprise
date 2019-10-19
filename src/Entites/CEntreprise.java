@@ -10,7 +10,6 @@ public class CEntreprise {
     private String nom;
     private String adresse;
     private String ville;
-    //private CRelance relance;
     private String dateRelance;
     private boolean relanceEffectuee;
 
@@ -119,13 +118,5 @@ public class CEntreprise {
     public void setNom(String Nom) {
         this.nom = Nom;
     }
-
-    /*public CRelance getRelance() {
-        return relance;
-    }
-
-    public void setRelance(CRelance relance) {
-        this.relance = relance;
-    }*/
 
 }

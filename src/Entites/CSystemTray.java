@@ -86,7 +86,7 @@ public class CSystemTray {
             awtException.printStackTrace();
         }
     }
-
+    
     //start of main method
     public static void main(String[] args) {
         CSystemTray system = new CSystemTray();
