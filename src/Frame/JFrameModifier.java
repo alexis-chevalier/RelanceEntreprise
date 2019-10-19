@@ -158,6 +158,9 @@ public class JFrameModifier extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /*
+    Modifie l'entreprise et enlève la Jframe.
+    */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nom = this.jTextFieldNom.getText();
         String adresse = "";

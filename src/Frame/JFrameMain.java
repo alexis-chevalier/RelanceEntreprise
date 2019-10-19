@@ -170,6 +170,9 @@ public class JFrameMain extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /*
+    Affiche une JFrameParemetres.
+    */
     private void jButtonParametresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonParametresActionPerformed
         try {
             new JFrameParametres().setVisible(true);
@@ -182,6 +185,9 @@ public class JFrameMain extends javax.swing.JFrame {
         new JFrameAjouter().setVisible(true);
     }//GEN-LAST:event_jButtonAjouterActionPerformed
 
+    /*
+    Supprime l'entreprise sélectionnée.
+    */
     private void jButtonSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSupprimerActionPerformed
         try {
             String nomEntreprise = (this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 0)).toString();
@@ -197,10 +203,16 @@ public class JFrameMain extends javax.swing.JFrame {
         this.RafraichirListe();
     }//GEN-LAST:event_jButtonSupprimerActionPerformed
 
+    /*
+    Rafraîchit la liste des entreprises.
+    */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.RafraichirListe();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /*
+    Affiche une JFrameModifier avec les informations de l'entreprise sélectionnée.
+    */
     private void jButtonModifierEntrepriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifierEntrepriseActionPerformed
         try {
             String nom = this.jTableEntreprise.getValueAt(this.jTableEntreprise.getSelectedRow(), 0).toString();
@@ -215,6 +227,9 @@ public class JFrameMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonModifierEntrepriseActionPerformed
 
+    /*
+    Permet d'afficher les informations des entreprises dans la jTable.
+    */
     public void afficherInfoEntreprise() {
         try {
             ArrayList<CEntreprise> list = metierEntreprise.RecupererListeEntreprise();
@@ -233,6 +248,9 @@ public class JFrameMain extends javax.swing.JFrame {
         }
     }
 
+    /*
+    Rafraîchit la liste.
+    */
     public void RafraichirListe() {
         DefaultTableModel model = (DefaultTableModel) jTableEntreprise.getModel();
         model.setRowCount(0);
@@ -243,6 +261,9 @@ public class JFrameMain extends javax.swing.JFrame {
         }
     }
 
+    /*
+    Affiche les entreprise à relancer dans le jTextArea.
+    */
     public void afficherEntrepriseARelancer() {
         ArrayList<CEntreprise> listeARelancer = metierEntreprise.EntrepriseARelancer();
         if (listeARelancer == null) {

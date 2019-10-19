@@ -25,9 +25,6 @@ public class CSystemTray {
         //Toolkit toolkit = Toolkit.getDefaultToolkit();
         //get image 
         Image image = Toolkit.getDefaultToolkit().getImage("img/robot.png");
-        //Image image = Toolkit.getDefaultToolkit().getImage("src/images/1.gif");
-        //source: https://media.giphy.com/media/3oEdv1GbekAakxXO8g/source.gif
-        //Image image = Toolkit.getDefaultToolkit().getImage("img/source.gif");
 
         //popupmenu
         PopupMenu trayPopupMenu = new PopupMenu();

@@ -150,6 +150,11 @@ public class JFrameAjouter extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButtonAnnulerActionPerformed
 
+    /*
+    Le bouton "Ajouter" permet d'ajouter une entreprise.
+    Avant l'ajout, la date de relance est calculée (+ 17 jours) ou il n'y en a pas si la relance
+    est déjà effectuée.
+    */
     private void jButtonAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAjouterActionPerformed
         String dateRelance = "";
         if (this.jCheckBoxRelanceEffectuee.isSelected()) {
@@ -166,6 +171,9 @@ public class JFrameAjouter extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonAjouterActionPerformed
 
+    /*
+    Si la relance est effectuée (donc si la checkbox est cochée) alors on désactive le jtextField de la date de relance.
+    */
     private void jCheckBoxRelanceEffectueeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxRelanceEffectueeActionPerformed
         if (this.jCheckBoxRelanceEffectuee.isSelected()) {
             this.jTextFieldDateRelance.setEnabled(false);

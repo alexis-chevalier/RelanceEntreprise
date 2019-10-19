@@ -172,6 +172,9 @@ public class JFrameParametres extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton_sauvegarderActionPerformed
 
+    /*
+    Charge les données des fichiers parametresBdd.properties et parametres.
+    */
     public void chargerDonneesFichier() throws FileNotFoundException, IOException {
         try (InputStream input = new FileInputStream("parametresBdd.properties")) {
             Properties prop = new Properties();
@@ -199,6 +202,9 @@ public class JFrameParametres extends javax.swing.JFrame {
         }
     }
 
+    /*
+    Sauvegarde les données des jTextField dans les fichiers properties.
+    */
     public void sauvegarderDonneesFichier() throws FileNotFoundException, IOException {
         String mail = "";
         String mdp = "";

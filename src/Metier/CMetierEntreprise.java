@@ -14,6 +14,10 @@ import java.util.Date;
  */
 public class CMetierEntreprise {
 
+    /**
+     * Récupère la liste des entreprises depuis la base de données.
+     * @return une liste de Centreprise.
+     */
     public ArrayList<CEntreprise> RecupererListeEntreprise() {
         CBDD bdd = new CBDD(new CParametresStockageBDD("parametresBdd.properties"));
         CTableEntreprise tableEntreprise = new CTableEntreprise();
@@ -22,6 +26,10 @@ public class CMetierEntreprise {
         return liste;
     }
 
+    /**
+     * Insère une entreprise dans la base de données.
+     * @param entreprise une CEntreprise.
+     */
     public void InsererEntreprise(CEntreprise entreprise) {
         CBDD bdd = new CBDD(new CParametresStockageBDD("parametresBdd.properties"));
         CTableEntreprise tableEntreprise = new CTableEntreprise();
@@ -29,6 +37,10 @@ public class CMetierEntreprise {
         tableEntreprise.insererEntreprise(entreprise);
     }
 
+    /**
+     * Supprime une entreprise grâce à son nom.
+     * @param nomEntreprise Le nom de l'entreprise sous forme d'une chaîne de caractères.
+     */
     public void SupprimerEntreprise(String nomEntreprise) {
         CBDD bdd = new CBDD(new CParametresStockageBDD("parametresBdd.properties"));
         CTableEntreprise tableEntreprise = new CTableEntreprise();
@@ -36,12 +48,22 @@ public class CMetierEntreprise {
         tableEntreprise.supprimerEntreprise(nomEntreprise);
     }
 
+    /**
+     * Calcule la date de relance.
+     * @param date Date du jour.
+     * @param nbAjouter Nombre de jours à ajouter à la date.
+     * @return La date de relance (String).
+     */
     public String calculDateRelance(String date, int nbAjouter) {
         CTableEntreprise tableEntreprise = new CTableEntreprise();
         String dateRelance = tableEntreprise.calculDateRelance(date, nbAjouter);
         return dateRelance;
     }
 
+    /**
+     * Modifie l'entreprise donnée en paramètres.
+     * @param entreprise une CEntreprise.
+     */
     public void ModifierEntreprise(CEntreprise entreprise) {
         CBDD bdd = new CBDD(new CParametresStockageBDD("parametresBdd.properties"));
         CTableEntreprise tableEntreprise = new CTableEntreprise();
@@ -49,6 +71,10 @@ public class CMetierEntreprise {
         tableEntreprise.modifierEntreprise(entreprise);
     }
 
+    /**
+     * Renvoie les entreprises à relancées sinon null.
+     * @return Les entreprises à relancées sous la forme d'une ArrayList.
+     */
     public ArrayList<CEntreprise> EntrepriseARelancer() {
         CBDD bdd = new CBDD(new CParametresStockageBDD("parametresBdd.properties"));
         CTableEntreprise tableEntreprise = new CTableEntreprise();
@@ -69,7 +95,6 @@ public class CMetierEntreprise {
         if (listeARelancer.isEmpty()) {
             listeARelancer = null;
         }
-        //System.out.println(listeARelancer.size());
         return listeARelancer;
     }
 

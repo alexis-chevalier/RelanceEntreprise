@@ -40,6 +40,11 @@ public class CTableEntreprise {
         this.setBdd(bdd);
     }
 
+    /**
+     * Permet d'insérer une entreprise.
+     * @param entreprise
+     * @return -1 si une erreur.
+     */
     public int insererEntreprise(CEntreprise entreprise) {
         String req = "INSERT INTO `entreprise` (`id`, `Nom`, `Adresse`, `Ville`, `date_relance`,`relance_effectuee`) VALUES (NULL, '" + entreprise.getNom() + "', '" + entreprise.getAdresse() + "', '" + entreprise.getVille() + "', '" + entreprise.getDateRelance() + "', " + entreprise.getRelanceEffectuee() + ")";
         int res = -1;
@@ -52,6 +57,11 @@ public class CTableEntreprise {
         return res;
     }
 
+    /**
+     * Convertit un ResultSet en CEntreprise.
+     * @param rs
+     * @return une CEntreprise.
+     */
     CEntreprise convertirEntreprise(ResultSet rs) {
         try {
             int id = rs.getInt("id");
@@ -67,6 +77,10 @@ public class CTableEntreprise {
         }
     }
 
+    /**
+     * Renvoie la liste des entreprises sous la forme d'une ArrayList sinon null
+     * @return 
+     */
     public ArrayList<CEntreprise> lireEntreprises() {
         if (bdd.connecter() == true) {
             ArrayList<CEntreprise> listeEntreprise = new ArrayList();
@@ -86,6 +100,10 @@ public class CTableEntreprise {
         return null;
     }
 
+    /**
+     * Supprime une entreprise de la base de données.
+     * @param nomEntreprise 
+     */
     public void supprimerEntreprise(String nomEntreprise) {
         if (bdd.connecter() == true) {
             bdd.executerRequeteUpdate("DELETE FROM `entreprise` WHERE Nom='" + nomEntreprise + "';");
@@ -95,6 +113,12 @@ public class CTableEntreprise {
         }
     }
 
+    /**
+     * Calcul la date de relance.
+     * @param date
+     * @param nbJourAjouter
+     * @return 
+     */
     public String calculDateRelance(String date, int nbJourAjouter) {
         String dateRelance = "";
         Date date1 = new Date(System.currentTimeMillis());
@@ -115,6 +139,10 @@ public class CTableEntreprise {
         return dateRelance;
     }
 
+    /**
+     * Modifie une entreprise dans la base de données.
+     * @param entreprise 
+     */
     public void modifierEntreprise(CEntreprise entreprise) {
         String req = "UPDATE `entreprise` SET Adresse='" + entreprise.getAdresse()
                 + "',Ville='" + entreprise.getVille()
