@@ -60,10 +60,16 @@ public class CMetierEntreprise {
         String dateAujourdhui = new SimpleDateFormat("dd/MM/yyyy").format(date);
         for (int i = 0; i < liste.size(); i++) {
             if (liste.get(i).getDateRelance().equals(dateAujourdhui)) {
-                System.out.println(liste.get(i).getNom());
-                listeARelancer.add(liste.get(i));
+                if (liste.get(i).getRelanceEffectuee() == false) {
+                    System.out.println(liste.get(i).getNom());
+                    listeARelancer.add(liste.get(i));
+                }
             }
         }
+        if (listeARelancer.isEmpty()) {
+            listeARelancer = null;
+        }
+        //System.out.println(listeARelancer.size());
         return listeARelancer;
     }
 
